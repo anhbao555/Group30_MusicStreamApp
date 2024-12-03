@@ -1,78 +1,157 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
+import { useNavigation } from '@react-navigation/native';
 
-
-export default function LibraryScreen() {
-  const songs = [
-    { title: 'FLOWER', artist: 'Jessica Gonzalez', time: '3:36' },
-    { title: 'Shape of You', artist: 'Anthony Taylor', time: '3:35' },
-    { title: 'Blinding Lights', artist: 'Ashley Scott', time: '4 songs' },
-    { title: 'Levitating', artist: 'Anthony Taylor', time: '7:48' },
-    { title: 'Astronaut in the Ocean', artist: 'Pedro Moreno', time: '3:36' },
-    { title: 'Dynamite', artist: 'Elena Jimenez', time: '6:22' },
+const LibraryScreen = () => {
+  const navigation = useNavigation();
+  const data = [
+    {
+      id: "1",
+      title: "FLOWER",
+      artist: "Jessica Gonzalez",
+      plays: "2.1M",
+      duration: "3:36",
+      image: require("../assets/My Library/Image 101.png"),
+    },
+    {
+      id: "2",
+      title: "Shape of You",
+      artist: "Anthony Taylor",
+      plays: "68M",
+      duration: "3:35",
+      image: require("../assets/My Library/Image 102.png"),
+    },
+    {
+      id: "3",
+      title: "Blinding Lights",
+      artist: "Ashley Scott",
+      plays: "4 songs",
+      image: require("../assets/My Library/Image 103.png"),
+      isPlaylist: true,
+    },
+    {
+      id: "4",
+      title: "Levitating",
+      artist: "Anthony Taylor",
+      plays: "9M",
+      duration: "7:48",
+      image: require("../assets/My Library/Image 104.png"),
+    },
+    {
+      id: "5",
+      title: "Astronaut in the Ocean",
+      artist: "Pedro Moreno",
+      plays: "23M",
+      duration: "3:36",
+      image: require("../assets/My Library/Image 105.png"),
+    },
+    {
+      id: "6",
+      title: "Dynamite",
+      artist: "Elena Jimenez",
+      plays: "10M",
+      duration: "6:22",
+      image: require("../assets/My Library/Image 106.png"),
+    },
   ];
+
+  const renderSongItem = ({ item }) => (
+    <View style={styles.songContainer}>
+      <Image source={item.image} style={styles.songImage} />
+      <View style={styles.songInfo}>
+        <Text style={styles.songTitle}>{item.title}</Text>
+        <Text style={styles.songArtist}>{item.artist}</Text>
+        {item.duration && (
+          <Text style={styles.songPlays}>
+            {item.plays} • {item.duration}
+          </Text>
+        )}
+      </View>
+      <TouchableOpacity>
+        {item.isPlaylist ? (
+          <Icon name="chevron-forward" size={24} color="#000" />
+        ) : (
+          <Icon name="heart" size={24} color="#87CEEB" />
+        )}
+      </TouchableOpacity>
+    </View>
+  );
 
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Your Library</Text>
-      <ScrollView horizontal style={styles.tags}>
-        <Text style={styles.tag}>Playlists</Text>
-        <Text style={styles.tag}>New tag</Text>
-        <Text style={styles.tag}>Songs</Text>
-        <Text style={styles.tag}>Albums</Text>
-        <Text style={styles.tag}>Artists</Text>
-      </ScrollView>
-      <ScrollView>
-        {songs.map((song, index) => (
-          <View style={styles.songItem} key={index}>
-            <Image source={{ uri: 'https://via.placeholder.com/50' }} style={styles.thumbnail} />
-            <View style={styles.songInfo}>
-              <Text style={styles.songTitle}>{song.title}</Text>
-              <Text style={styles.songArtist}>{song.artist}</Text>
-            </View>
-            <Text style={styles.songTime}>{song.time}</Text>
-            <TouchableOpacity>
-              <Text style={styles.heart}>💙</Text>
-            </TouchableOpacity>
-          </View>
-        ))}
-      </ScrollView>
+      <View style={styles.filterContainer}>
+        <TouchableOpacity onPress={() => navigation.navigate("PlayList")}>
+          <Text style={styles.filterButton}>Playlists</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.filterButton}>New tag</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.filterButton}>Songs</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.filterButton}>Albums</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.filterButton}>Artists</Text>
+        </TouchableOpacity>
+      </View>
+      <FlatList
+        data={data}
+        renderItem={renderSongItem}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContainer}
+      />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
-    paddingTop: 50,
+    backgroundColor: "#fff",
+    paddingTop: 40,
     paddingHorizontal: 20,
   },
   header: {
     fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  tags: {
-    flexDirection: 'row',
+    fontWeight: "bold",
     marginBottom: 20,
   },
-  tag: {
-    marginRight: 15,
+  filterContainer: {
+    flexDirection: "row",
+    // justifyContent: "space-between",
+    marginBottom: 20,
+  },
+  filterButton: {
+    fontSize: 14,
+    color: "#000",
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 15,
-    backgroundColor: '#EEE',
+    backgroundColor: "#f2f2f2",
   },
-  songItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  listContainer: {
+    paddingBottom: 20,
+  },
+  songContainer: {
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: 15,
   },
-  thumbnail: {
-    width: 50,
-    height: 50,
-    borderRadius: 10,
+  songImage: {
+    width: 60,
+    height: 60,
+    borderRadius: 8,
     marginRight: 15,
   },
   songInfo: {
@@ -80,16 +159,16 @@ const styles = StyleSheet.create({
   },
   songTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   songArtist: {
-    color: '#666',
+    fontSize: 14,
+    color: "#666",
   },
-  songTime: {
-    color: '#666',
-  },
-  heart: {
-    fontSize: 20,
-    color: '#00F',
+  songPlays: {
+    fontSize: 12,
+    color: "#666",
   },
 });
+
+export default LibraryScreen;

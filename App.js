@@ -10,6 +10,14 @@ import WelcomeScreen from './components/WelcomeScreen';
 import PlaylistScreen from './components/PlaylistScreen';
 import SearchScreen from './components/SearchScreen';
 import SearchResultScreen from './components/SearchResultScreen';
+import FeedScreen from './components/FeedScreen';
+import Comments from './components/CommentsScreen';
+import HomeAudio from './components/HomeAudio';
+import LuanchSreen from './components/LuanchSreen';
+import AudioListing from './components/AudioListing';
+import PlayAnAudio from './components/PlayAnAudio';
+import ArtistProfile from './components/ArtistProfile';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -17,7 +25,7 @@ const Tab = createBottomTabNavigator();
 function MainTabs() {
   return (
     <Tab.Navigator
-      initialRouteName="Search"
+      initialRouteName="Home"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           let iconName;
@@ -30,7 +38,7 @@ function MainTabs() {
               iconName = 'search';
               break;
             case 'Feed':
-              iconName = 'feed';
+              iconName = 'newspaper-outline';
               break;
             case 'Library':
               iconName = 'library';
@@ -45,10 +53,10 @@ function MainTabs() {
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      <Tab.Screen name="Home" component={PlaylistScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="Home" component={HomeAudio} options={{ headerShown: false }} />
       <Tab.Screen name="Search" component={SearchScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="Feed" component={FeedScreen} options={{ headerShown: false }} />
       <Tab.Screen name="Library" component={LibraryScreen} options={{ headerShown: false }} />
-      <Tab.Screen name="Subscription" component={SubscriptionScreen} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
 }
@@ -56,10 +64,17 @@ function MainTabs() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="MainTabs">
-        <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
+      <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="HomePage" component={MainTabs} options={{ headerShown: false }} />
         <Stack.Screen name="SearchResults" component={SearchResultScreen} options={{headerShown: false}} />
+        <Stack.Screen name="Comments" component={Comments} options={{ headerShown: false }} />
+        <Stack.Screen name="LuanchSreen" component={LuanchSreen} options={{headerShown : false}}/>
+        <Stack.Screen name="HomeAudio" component={HomeAudio} options={{headerShown : false}}/>
+        <Stack.Screen name="AudioListing" component={AudioListing} options={{headerShown : false}}/>
+        <Stack.Screen name="PlayAnAudio" component={PlayAnAudio} options={{headerShown : false}}/>
+        <Stack.Screen name="ArtistProfile" component={ArtistProfile} options={{headerShown :false}}/>
+        <Stack.Screen name="PlayList" component={PlaylistScreen} options={{headerShown :false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

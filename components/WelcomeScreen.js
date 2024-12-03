@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Image } from
 export default function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
-      source={require('../assets/Launch Screen - Premium/Image 112.png')} // Đường dẫn tới hình nền của bạn
+      source={require('../assets/Launch Screen - Premium/Image 112.png')} 
       style={styles.background}
       resizeMode="cover"
     >
@@ -20,7 +20,7 @@ export default function WelcomeScreen({ navigation }) {
         </View>
 
         {/* Nút Start Listening */}
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Playlist")}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("HomePage")}>
           <Text style={styles.buttonText}>Start listening</Text>
         </TouchableOpacity>
       </View>

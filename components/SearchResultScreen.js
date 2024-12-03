@@ -22,6 +22,10 @@ const SearchResultScreen = () => {
       // Quay lại SearchScreen và truyền text tìm kiếm
       navigation.navigate('Search', { searchText });
     };
+
+    const handleSuggestionPress = (item) => {
+      setSearchText(item.name); // Cập nhật text trong ô nhập
+    };
   return (
     <View style={styles.container}>
       <View style={styles.searchInputContainer}>
@@ -41,7 +45,12 @@ const SearchResultScreen = () => {
         data={data}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <Text style={styles.resultItem}>{item.name}</Text>
+          <TouchableOpacity
+            onPress={() => handleSuggestionPress(item)} // Xử lý khi chọn gợi ý
+            style={styles.resultItem}
+          >
+            <Text>{item.name}</Text>
+          </TouchableOpacity>
         )}
       />
     </View>
