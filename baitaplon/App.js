@@ -9,11 +9,19 @@ import AssetExample from './components/AssetExample';
 import LuanchSreen from "./LuanchSreen";
 import HomeAudio from './HomeAudio';
 import AudioListing from './AudioListing';
+
 import PlayAnAudio from "./PlayAnAudio";
-import ArtistProfile from "./ArtistProfle"
+import ArtistProfile from "./ArtistProfle";
+import PlayAnAudio_Shape from "./PlayAnAudio_Shape";
+import PlayAudioBlingdingLights from "./PlayAudioBlingdingLights";
+import PlayAudioLivating from "./PlayAudioLivating";
+import PlayAudioAstronaunt from "./PlayAudioAstronaunt";
+import PlayAudioDynamit from "./PlayAudioDynamite";
+
 const Stack= createNativeStackNavigator();
 const App=() => {
   return (
+    
    <NavigationContainer>
     <Stack.Navigator initialRouteName="LuanchSreen">
      <Stack.Screen name="LuanchSreen" component={LuanchSreen} options={{headerShown : false}}/>
@@ -21,8 +29,15 @@ const App=() => {
      <Stack.Screen name ="AudioListing" component={AudioListing} options={{headerShown : false}}/>
      <Stack.Screen name="PlayAnAudio" component={PlayAnAudio} options={{headerShown : false}}/>
      <Stack.Screen name="ArtistProfile" component={ArtistProfile} options={{headerShown :false}}/>
+     <Stack.Screen name="PlayAnAudio_Shape" component={PlayAnAudio_Shape} options={{headerShown : false}}/>
+     <Stack.Screen name ="PlayAudioBlingdingLights" component={PlayAudioBlingdingLights} options={{headerShown :false}}/>
+     <Stack.Screen name ="PlayAudioLivating" component={PlayAudioLivating} options={{headerShown :false}}/>
+     <Stack.Screen name ="PlayAudioAstronaunt" component={PlayAudioAstronaunt} options={{headerShown :false}}/>
+     <Stack.Screen name ="PlayAudioDynamit" component={PlayAudioDynamit} options={{headerShown :false}}/>
+
     </Stack.Navigator>
    </NavigationContainer>
+  
   );
 }
 
