@@ -67,9 +67,32 @@ const Data =[{
 },
 
 
+
 ]
 export default function AudioListing({navigation}) {
+  const handlePress = (id) => {
+    if (id === "1") {
+      navigation.navigate("PlayAnAudio");
+    } else if(id==="2") {
+      navigation.navigate("PlayAnAudio_Shape");
+    }else if(id==="3") {
+      navigation.navigate("PlayAudioBlingdingLights");
+    }
+    else if(id==="4") {
+      navigation.navigate("PlayAudioLivating");
+    }
+    else if(id==="5") {
+      navigation.navigate("PlayAudioAstronaunt");
+    }
+    else if(id==="6") {
+      navigation.navigate("PlayAudioDynamit");
+    }
+    else{
+      console.log(`Item ${id} was pressed.`);
+    }
+  };
   const renderItem=({item}) => (
+    <TouchableOpacity onPress={() => handlePress(item.id)}>
       <View style={style.container1}>
         <View style={style.itemContainer}>
           <View style={{flexDirection:'row',alignItems:'center'}}>
@@ -88,6 +111,7 @@ export default function AudioListing({navigation}) {
           <Icon name="keyboard-control" size={40} color="#78797c" />
         </View>
       </View>
+      </TouchableOpacity>
   );
   return(
     <ScrollView style={style.container } showsVerticalScrollIndicator={false} >
@@ -97,7 +121,7 @@ export default function AudioListing({navigation}) {
           justifyContent: 'space-between',
           marginTop: 10
         }}>
-        <Text style={{ color: 'black', fontSize: 20,fontWeight : 500 }}>9:41</Text>
+        <Text style={{ color: 'black', fontSize: 20,fontWeight : '500' }}>9:41</Text>
         <View
           style={{
             flexDirection: 'row',
@@ -118,7 +142,7 @@ export default function AudioListing({navigation}) {
       <View style={{flexDirection:'row',justifyContent:'space-between',marginTop : 20}}>
         <Image source={require("./Home-Audio/Container31.png")} style={{height : 200,width:200,marginRight:10}}/>
         <View style={{flexDirection:'column',justifyContent:'center'}}>
-          <Text style={{fontSize:30,fontWeight:700}}>Top 50 - Canada</Text>
+          <Text style={{fontSize:30,fontWeight:'700'}}>Top 50 - Canada</Text>
           <View style={{flexDirection: 'row', alignItems: 'center',marginVertical: 4}}>
             <Icon name="favorite-border" size={16} color="#1db954" />
           <Text style={{fontSize: 20,color: '#666',marginLeft: 4}}>1,234</Text>
@@ -151,7 +175,7 @@ export default function AudioListing({navigation}) {
           <View style={{flexDirection:'row'}}>
             <Image source={require("./AudioListing-Search/Image83.png")} style={style.imgSing}/>
             <View style={style.textContainer}>
-              <Text style={{ fontSize : 25,fontWeight :500,color:'white'}}>FLOWER</Text>
+              <Text style={{ fontSize : 25,fontWeight :'500',color:'white'}}>FLOWER</Text>
               <View style={{flexDirection:'row',alignItems:'center'}}>
                   <Text style={{fontSize :20,color:"white",marginLeft:5}}>Me</Text>
                   <Icon name="circle" size={15} color="white" style={{marginLeft :5}}/>
@@ -171,25 +195,25 @@ export default function AudioListing({navigation}) {
           <Icon name="home"
           size={40}
           color="#7dc1c0"/>
-          <Text style={{color:'#7dc1c0',fontSize:15,fontWeight:500,textAlign:'center'}} >Home</Text>
+          <Text style={{color:'#7dc1c0',fontSize:15,fontWeight:'500',textAlign:'center'}} >Home</Text>
          </View>
          <View style={{flexDirection:'column',justifyContent:'center',marginTop :20}}>
           <Icon name="search"
           size={40}
           color="#66676a"/>
-          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:500,textAlign:'center'}} >Search</Text>
+          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:'500',textAlign:'center'}} >Search</Text>
          </View>
          <View style={{flexDirection:'column',justifyContent:'center',marginTop :20}}>
           <Icon name="feed"
           size={40}
           color="#66676a"/>
-          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:500,textAlign:'center'}} >Feed</Text>
+          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:'500',textAlign:'center'}} >Feed</Text>
          </View>
          <View style={{flexDirection:'column',justifyContent:'center',marginTop :20}}>
           <Icon name="library-music"
           size={40}
           color="#66676a"/>
-          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:500,textAlign:'center'}} >Library</Text>
+          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:'500',textAlign:'center'}} >Library</Text>
          </View>
         </View>
   </ScrollView>
@@ -223,7 +247,7 @@ const style = StyleSheet.create({
   },
   itemtitle :{
     fontSize : 25,
-    fontWeight :500
+    fontWeight :'500'
   },
   itemname :{
     fontSize :20,

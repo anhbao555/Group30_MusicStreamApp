@@ -18,6 +18,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AssetExample from './components/AssetExample';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 const Data =[{
   id : "1",
@@ -70,7 +71,29 @@ const Data =[{
 
 ]
 export default function ArtistProfile({navigation}) {
+  const handlePress = (id) => {
+    if (id === "1") {
+      navigation.navigate("PlayAnAudio");
+    } else if(id==="2") {
+      navigation.navigate("PlayAnAudio_Shape");
+    }else if(id==="3") {
+      navigation.navigate("PlayAudioBlingding");
+    }
+    else if(id==="4") {
+      navigation.navigate("PlayAudioLivating");
+    }
+    else if(id==="5") {
+      navigation.navigate("PlayAudioAstronaunt");
+    }
+    else if(id==="6") {
+      navigation.navigate("PlayAudioDynamit");
+    }
+    else{
+      console.log(`Item ${id} was pressed.`);
+    }
+  };
   const renderItem=({item}) => (
+    <TouchableOpacity onPress={() => handlePress(item.id)}>
       <View style={styles.container1}>
         <View style={styles.itemContainer}>
           <View style={{flexDirection:'row',alignItems:'center'}}>
@@ -89,6 +112,7 @@ export default function ArtistProfile({navigation}) {
           <Icon name="keyboard-control" size={40} color="#78797c" />
         </View>
       </View>
+      </TouchableOpacity>
   );
   return(
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -116,7 +140,7 @@ export default function ArtistProfile({navigation}) {
       </TouchableOpacity>
       <View style={{flexDirection:'column',justifyContent:'center',alignItems:"center"}}>
         <Image source={require("./ArtistProfile/Image63.png")}></Image>
-        <Text style={{fontSize:35,fontWeight:700}}>Ryon Young</Text>
+        <Text style={{fontSize:35,fontWeight:'700'}}>Ryon Young</Text>
         <Text style={{fontSize:20,color:"#7a7c80"}}>65.1K Followers</Text>
       </View>
       <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:10}}>
@@ -131,55 +155,88 @@ export default function ArtistProfile({navigation}) {
           <Image source={require("./ArtistProfile/IconButton4.png")}/>
         </View>
       </View>
-      <Text style={{fontSize:30,fontWeight:600}}>Popular</Text>
+
+      <Text style={{fontSize:30,fontWeight:'600'}}>Popular</Text>
+      <TouchableOpacity>
       <FlatList
         data={Data}
         renderItem={renderItem}
         keyExtractor={(item)=>item.id}
       />
-      <Text style={{fontSize:35,fontWeight:600}}>Albums</Text>
+      </TouchableOpacity>
+      <Text style={{fontSize:35,fontWeight:'600'}}>Albums</Text>
       <View style={{flexDirection:'row',justifyContent :'space-between'}}>
-        <View style={{flexDirection:'column'}}>
+        <View style={{flexDirection:'column',marginRight:20}}>
           <Image source={require('./ArtistProfile/Image71.png')} style={{width :140}}/>
           <Text style={{fontSize:20}}>ME</Text>
           <Text style={{fontSize:15,color:'#7a7c80'}}>Jessica Gonzalez</Text>
         </View>
-        <View style={{flexDirection:'column'}}>
+        <View style={{flexDirection:'column',marginRight:20}}>
           <Image source={require('./ArtistProfile/Image72.png')} style={{width :140}}/>
           <Text style={{fontSize:20}}>Magna nost </Text>
           <Text style={{fontSize:15,color:'#7a7c80'}}>Jessica Gonzalez</Text>
         </View>
         <View style={{flexDirection:'column'}}>
-          <Image source={require('./ArtistProfile/Image73.png')} style={{width :140}}/>
+          <Image source={require('./ArtistProfile/Image77.png')} style={{width :140}}/>
           <Text style={{fontSize:20}}>Proident</Text>
           <Text style={{fontSize:15,color:'#7a7c80'}}>Jessica Gonzalez</Text>
         </View>
       </View>
+
       <Text style={{fontSize : 20}}>About</Text>
+      <Image source={require('./ArtistProfile/Image73.png')} />
+      <Text style={{fontSize:14,color:'#7a7c80',marginTop:10}}>Do in cupidatat aute et in officia aute laboris est</Text>
+      <Text style={{fontSize:14,color:'#7a7c80'}}>Lorem est nisi dolor consequat voluptate duis irure.</Text>
+      <Text style={{fontSize:14,color:'#7a7c80'}}>Veniam quis amet irure cillum elit aliquip sunt cillum</Text>
+      <Text style={{fontSize:14,color:'#7a7c80'}}>cillum do aliqua voluptate ad non magna elit. Do ea n</Text>
+
+      <TouchableOpacity style={{flexDirection:'row',justifyContent:'center'}}>
+        <Text style={{fontSize:'20',color:'#49beae',marginTop:10}}>View more</Text>
+       </TouchableOpacity>
+
+        <Text style={{fontSize:35,fontWeight:'600'}}>Fans also like</Text>
+      <View style={{flexDirection:'row',justifyContent :'space-between'}}>
+        <View style={{flexDirection:'column',marginRight:20}}>
+          <Image source={require('./ArtistProfile/Image74.png')} style={{width :140}}/>
+          <Text style={{fontSize:20}}>ME</Text>
+          <Text style={{fontSize:15,color:'#7a7c80'}}>Jessica Gonzalez</Text>
+        </View>
+        <View style={{flexDirection:'column',marginRight:20}}>
+          <Image source={require('./ArtistProfile/Image75.png')} style={{width :140}}/>
+          <Text style={{fontSize:20}}>Magna nost </Text>
+          <Text style={{fontSize:15,color:'#7a7c80'}}>Jessica Gonzalez</Text>
+        </View>
+        <View style={{flexDirection:'column'}}>
+          <Image source={require('./ArtistProfile/Image76.png')} style={{width :140}}/>
+          <Text style={{fontSize:20}}>Proident</Text>
+          <Text style={{fontSize:15,color:'#7a7c80'}}>Jessica Gonzalez</Text>
+        </View>
+      </View>
+
        <View style={{flexDirection:'row',justifyContent:'space-between',borderTopWidth:1,width:'100%',borderColor:'#b3b4ba',marginBottom:20}}>
         <View style={{flexDirection:'column',justifyContent:'center',marginTop :20}}>
           <Icon name="home"
           size={40}
           color="#7dc1c0"/>
-          <Text style={{color:'#7dc1c0',fontSize:15,fontWeight:500,textAlign:'center'}} >Home</Text>
+          <Text style={{color:'#7dc1c0',fontSize:15,fontWeight:'500',textAlign:'center'}} >Home</Text>
          </View>
          <View style={{flexDirection:'column',justifyContent:'center',marginTop :20}}>
           <Icon name="search"
           size={40}
           color="#66676a"/>
-          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:500,textAlign:'center'}} >Search</Text>
+          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:'500',textAlign:'center'}} >Search</Text>
          </View>
          <View style={{flexDirection:'column',justifyContent:'center',marginTop :20}}>
           <Icon name="feed"
           size={40}
           color="#66676a"/>
-          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:500,textAlign:'center'}} >Feed</Text>
+          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:'500',textAlign:'center'}} >Feed</Text>
          </View>
          <View style={{flexDirection:'column',justifyContent:'center',marginTop :20}}>
           <Icon name="library-music"
           size={40}
           color="#66676a"/>
-          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:500,textAlign:'center'}} >Library</Text>
+          <Text style={{color:"#a3a4a8",fontSize:15,fontWeight:'500',textAlign:'center'}} >Library</Text>
          </View>
         </View>
     </ScrollView>
@@ -212,7 +269,7 @@ const styles = StyleSheet.create({
   },
   itemtitle :{
     fontSize : 25,
-    fontWeight :500
+    fontWeight :'500'
   },
   itemname :{
     fontSize :20,
