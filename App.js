@@ -16,7 +16,12 @@ import HomeAudio from './components/HomeAudio';
 import LuanchSreen from './components/LuanchSreen';
 import AudioListing from './components/AudioListing';
 import PlayAnAudio from './components/PlayAnAudio';
-import ArtistProfile from './components/ArtistProfile';
+import PlayAnAudio_Shape from "./components/PlayAnAudio_Shape";
+import PlayAudioBlingdingLights from "./components/PlayAudioBlingdingLights";
+import PlayAudioLivating from "./components/PlayAudioLivating";
+import PlayAudioAstronaunt from "./components/PlayAudioAstronaunt";
+import PlayAudioDynamit from "./components/PlayAudioDynamite";
+import ArtistProfile from './components/ArtistProfle';
 
 
 const Stack = createNativeStackNavigator();
@@ -64,8 +69,8 @@ function MainTabs() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
-        <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
+      <Stack.Navigator initialRouteName="Launch">
+        <Stack.Screen name="Launch" component={LuanchSreen} options={{ headerShown: false }} />
         <Stack.Screen name="HomePage" component={MainTabs} options={{ headerShown: false }} />
         <Stack.Screen name="SearchResults" component={SearchResultScreen} options={{headerShown: false}} />
         <Stack.Screen name="Comments" component={Comments} options={{ headerShown: false }} />
@@ -73,8 +78,16 @@ export default function App() {
         <Stack.Screen name="HomeAudio" component={HomeAudio} options={{headerShown : false}}/>
         <Stack.Screen name="AudioListing" component={AudioListing} options={{headerShown : false}}/>
         <Stack.Screen name="PlayAnAudio" component={PlayAnAudio} options={{headerShown : false}}/>
+        <Stack.Screen name="PlayAnAudio_Shape" component={PlayAnAudio_Shape} options={{headerShown : false}}/>
+        <Stack.Screen name ="PlayAudioBlingdingLights" component={PlayAudioBlingdingLights} options={{headerShown :false}}/>
+        <Stack.Screen name ="PlayAudioLivating" component={PlayAudioLivating} options={{headerShown :false}}/>
+        <Stack.Screen name ="PlayAudioAstronaunt" component={PlayAudioAstronaunt} options={{headerShown :false}}/>
+        <Stack.Screen name ="PlayAudioDynamit" component={PlayAudioDynamit} options={{headerShown :false}}/>
         <Stack.Screen name="ArtistProfile" component={ArtistProfile} options={{headerShown :false}}/>
         <Stack.Screen name="PlayList" component={PlaylistScreen} options={{headerShown :false}}/>
+
+        <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Subscription" component={SubscriptionScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

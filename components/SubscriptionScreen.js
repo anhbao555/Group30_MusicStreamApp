@@ -104,7 +104,7 @@ export default function SubscriptionScreen({ navigation }) {
           />
         ))}
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity onPress={() => navigation.navigate("HomePage")}>
         <Text style={styles.backText}>Back home</Text>
       </TouchableOpacity>
     </View>

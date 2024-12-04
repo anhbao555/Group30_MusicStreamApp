@@ -66,9 +66,32 @@ const Data =[{
 },
 
 
+
 ]
 export default function AudioListing({navigation}) {
+  const handlePress = (id) => {
+    if (id === "1") {
+      navigation.navigate("PlayAnAudio");
+    } else if(id==="2") {
+      navigation.navigate("PlayAnAudio_Shape");
+    }else if(id==="3") {
+      navigation.navigate("PlayAudioBlingdingLights");
+    }
+    else if(id==="4") {
+      navigation.navigate("PlayAudioLivating");
+    }
+    else if(id==="5") {
+      navigation.navigate("PlayAudioAstronaunt");
+    }
+    else if(id==="6") {
+      navigation.navigate("PlayAudioDynamit");
+    }
+    else{
+      console.log(`Item ${id} was pressed.`);
+    }
+  };
   const renderItem=({item}) => (
+    <TouchableOpacity onPress={() => handlePress(item.id)}>
       <View style={style.container1}>
         <View style={style.itemContainer}>
           <View style={{flexDirection:'row',alignItems:'center'}}>
@@ -87,6 +110,7 @@ export default function AudioListing({navigation}) {
           <Icon name="keyboard-control" size={40} color="#78797c" />
         </View>
       </View>
+      </TouchableOpacity>
   );
   return(
     <ScrollView style={style.container } showsVerticalScrollIndicator={false} >
